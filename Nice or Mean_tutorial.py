@@ -6,7 +6,6 @@
 #Purpose:   Simple text game to practive coding in Python
 #
 
-from playsound import playsound
 
 def start(nice=0,mean=0,name=""):
     # get user's name
@@ -44,13 +43,13 @@ def nice_mean(nice,mean,name):
     stop = True
     while stop:
         show_score(nice,mean,name)
-        pick = input("\nA stranger approaches you for a /nconversation. Will you be nice \nor mean? (N/M) \n>>>:").lower()
+        pick = input("\nA stranger approaches you for a \nconversation. Will you be nice \nor mean? (N/M) \n>>>:").lower()
         if pick == "n":
             print("\nThe stranger walks away smiling...")
             nice = (nice + 1)
             stop = False
         if pick == "m":
-            print ("\nThe stranger glares at you /nmenancingly and storms off...")
+            print ("\nThe stranger glares at you \nmenancingly and storms off...")
             mean = (mean + 1)
             stop = False
     score(nice,mean,name) # pass the 3 variables to the score()
@@ -58,7 +57,12 @@ def nice_mean(nice,mean,name):
 
 
 def show_score(nice,mean,name):
-    print ("\n{}, your current total: \n({}, Nice) and ({}, Mean)".format(name,nice,mean))
+    if nice > mean:
+        print ("\nThe sun is shining!")
+    if nice < mean:
+        print ("\nClouds blot out the sun!")
+    if nice == mean:
+        print ("\nAnything could happen")
 
 
 
