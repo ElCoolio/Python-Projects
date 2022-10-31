@@ -23,6 +23,11 @@ class Cat(Animal): #child class, inherited variables are overwritten with new va
     hasTail = True
     call = "Meow!"
 
+
+    def information(self): #uses polymophism to change the way the information() method from the original class works
+        msg ="\nName : {}\nAnimalia: {}\nDiet: {}\nTop Speed: {}\nNumber of Legs {}".format(self.name,self.animalia,self.diet,self.topSpeed,self.numOfLegs)
+        return msg
+
     def pounce(self):
         msg = "The cat pounces on its prey!"
         return msg
@@ -36,6 +41,10 @@ class Bird(Animal): #child class, inherited variables are overwritten with new v
     topSpeed = 1
     flightSpeed = 40
     call = "Chirp!"
+
+    def information(self): #uses polymophism to change the way the information() method from the original class works
+        msg ="\nName : {}\nAnimalia: {}\nDiet: {}\nTop Speed: {}\nFlight Speed: {}".format(self.name,self.animalia,self.diet,self.topSpeed,self.flightSpeed)
+        return msg
 
     def fly(self):
         msg = "The bird flys high into the sky!"
