@@ -11,6 +11,7 @@ class Cat(Animal): #child class, inherited variables are overwritten with new va
     numOfLegs = 4
     topSpeed = 30
     hasTail = True
+    call = "Meow!"
 
 class Bird(Animal): #child class, inherited variables are overwritten with new values.  Has additional property of numOfWings and flightSpeed.
     diet = "herbivore"
