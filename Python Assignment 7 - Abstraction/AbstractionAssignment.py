@@ -9,7 +9,7 @@ class Animal: #parent class, most variables are placeholders
     call = " "
     
     @abstractmethod #this defines information as an abstract method.  
-    def information(self):
+    def information(ABC):
         pass
 
     def callSound(self):
