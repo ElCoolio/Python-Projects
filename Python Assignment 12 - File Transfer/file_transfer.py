@@ -2,7 +2,10 @@ import tkinter as tk #import statements
 from tkinter import *
 import tkinter.filedialog
 import os
+import time
 import shutil
+import datetime
+from datetime import timedelta
 
 class ParentWindow(Frame): #making our own frame class for our own purpose
     def __init__(self, master):
@@ -66,10 +69,23 @@ class ParentWindow(Frame): #making our own frame class for our own purpose
         #gets a list of the files in the source directory
         source_files = os.listdir(source)
         #runs through each file in the source directory
+
+        #This starts the extra code for the assignment.
+        todaysDateTime = datetime.datetime.now()
+        
         for i in source_files:
+            tempPath = (source + "/" + i) #temp variable for the path for each item in folder
+            tempFileTime = os.path.getmtime(tempPath) #temp variable for the timestamp of each item
+            tempFTConv = datetime.datetime.fromtimestamp(tempFileTime) #converting it to a datetime object to be comparable
+            difference = (todaysDateTime - tempFTConv).days #getting the difference between by the time and the timestamp in "days" anything 1 or more is over 24 hours
+            if difference > 0:
+                print(i + " was not moved")
+            else:
+                shutil.move(source + "/" + i, destination)
+                print(i + ' was successfully transferred')
             #moves each file from the source to the destination
-            shutil.move(source + "/" + i, destination)
-            print(i + ' was successfully transferred')
+
+            
 
     def exit_program(self):
         #root is the main GUI window, the Tkinter destroy method
@@ -78,6 +94,8 @@ class ParentWindow(Frame): #making our own frame class for our own purpose
 
         
 if __name__ == "__main__":
+
+
     root = tk.Tk()
     App = ParentWindow(root)
     root.mainloop()
